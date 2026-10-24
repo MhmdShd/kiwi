@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Kiwi — UI Mockup</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      :root {
+        --bg: oklch(0.98 0.01 330);
+        --fg: oklch(0.2 0.02 330);
+        --card: oklch(1 0 0);
+        --primary: oklch(0.65 0.2 350);
+        --primary-2: oklch(0.72 0.18 340);
+        --secondary: oklch(0.95 0.03 350);
+        --muted: oklch(0.95 0.02 350);
+        --muted-fg: oklch(0.55 0.05 350);
+        --accent: oklch(0.9 0.05 350);
+        --border: oklch(0.9 0.03 350);
+      }
+      html,
+      body {
+        background:
+          radial-gradient(1200px 600px at 10% -10%, oklch(0.95 0.08 340 / 0.7), transparent 60%),
+          radial-gradient(900px 500px at 110% 10%, oklch(0.92 0.07 320 / 0.6), transparent 55%),
+          var(--bg);
+        color: var(--fg);
+        font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+          Arial;
+      }
+      .glass {
+        background: color-mix(in oklch, var(--card) 70%, transparent);
+        backdrop-filter: blur(14px) saturate(140%);
+        -webkit-backdrop-filter: blur(14px) saturate(140%);
+      }
+      .ring-soft {
+        box-shadow:
+          0 1px 0 oklch(1 0 0 / 0.8) inset,
+          0 12px 40px -16px oklch(0.65 0.2 350 / 0.25),
+          0 2px 8px -2px oklch(0.65 0.2 350 / 0.1);
+      }
+      .grad-primary {
+        background-image: linear-gradient(135deg, var(--primary) 0%, var(--primary-2) 100%);
+      }
+      .grad-text {
+        background: linear-gradient(135deg, var(--primary) 0%, oklch(0.55 0.22 320) 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .bubble-user {
+        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-2) 100%);
+        color: #fff;
+      }
+      .bubble-assistant {
+        background: var(--card);
+        border: 1px solid var(--border);
+      }
+      .chip {
+        background: color-mix(in oklch, var(--accent) 60%, transparent);
+        color: oklch(0.35 0.08 350);
+      }
+      .dot {
+        animation: bnc 1s infinite ease-in-out;
+      }
+      .dot:nth-child(2) {
+        animation-delay: 0.15s;
+      }
+      .dot:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+      @keyframes bnc {
+        0%,
+        80%,
+        100% {
+          transform: translateY(0);
+          opacity: 0.5;
+        }
+        40% {
+          transform: translateY(-4px);
+          opacity: 1;
+        }
+      }
+      .scroll-fade {
+        mask-image: linear-gradient(to bottom, transparent, #000 24px, #000 calc(100% - 24px), transparent);
+      }
+      .nav-item {
+        position: relative;
+      }
+      .nav-item.active::before {
+        content: "";
+        position: absolute;
+        left: -6px;
+        top: 8px;
+        bottom: 8px;
+        width: 3px;
+        border-radius: 3px;
+        background: linear-gradient(180deg, var(--primary), var(--primary-2));
+      }
+      .icon-btn {
+        width: 36px;
+        height: 36px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        color: var(--muted-fg);
+        transition: 0.15s ease;
+      }
+      .icon-btn:hover {
+        background: var(--muted);
+        color: var(--fg);
+      }
+      input,
+      textarea {
+        background: transparent;
+        outline: none;
+      }
+      .kbd {
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 11px;
+        padding: 2px 6px;
+        border-radius: 6px;
+        background: var(--muted);
+        color: var(--muted-fg);
+        border: 1px solid var(--border);
+      }
+    </style>
+  </head>
+  <body class="min-h-screen">
+    <div class="flex h-screen p-3 gap-3">
+      <!-- Sidebar -->
+      <aside class="glass ring-soft rounded-3xl w-72 flex flex-col overflow-hidden">
+        <div class="p-5 flex items-center gap-3">
+          <div
+            class="grad-primary w-10 h-10 rounded-2xl flex items-center justify-center text-white font-bold shadow-lg"
+          >
+            K
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="text-base font-semibold tracking-tight">Kiwi</div>
+            <div class="text-xs text-[color:var(--muted-fg)] truncate">
+              mhmdalishd10@gmail.com
+            </div>
+          </div>
+          <button class="icon-btn" title="Settings">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          </button>
+        </div>
+
+        <div class="px-4">
+          <button
+            class="grad-primary w-full text-white font-medium rounded-2xl py-2.5 shadow-md shadow-[oklch(0.65_0.2_350/0.3)] hover:opacity-95 flex items-center justify-center gap-2"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+            New chat
+          </button>
+        </div>
+
+        <div class="px-4 mt-4">
+          <div class="relative">
+            <svg class="absolute left-3 top-1/2 -translate-y-1/2 text-[color:var(--muted-fg)]" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+            <input
+              placeholder="Search chats"
+              class="w-full pl-9 pr-12 py-2 rounded-xl border border-[color:var(--border)] text-sm placeholder:text-[color:var(--muted-fg)]"
+            />
+            <span class="kbd absolute right-2 top-1/2 -translate-y-1/2">⌘K</span>
+          </div>
+        </div>
+
+        <div class="px-4 mt-5 text-[11px] uppercase tracking-wider text-[color:var(--muted-fg)] font-medium">
+          Today
+        </div>
+        <nav class="flex-1 overflow-y-auto px-3 mt-1 scroll-fade">
+          <div class="space-y-0.5">
+            <div class="nav-item active flex items-center gap-2 px-3 py-2 rounded-xl bg-[color:var(--muted)] text-sm font-medium">
+              <span class="flex-1 truncate">Refining the chat UI</span>
+              <button class="icon-btn !w-7 !h-7 opacity-60 hover:opacity-100">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg>
+              </button>
+            </div>
+            <div class="nav-item flex items-center gap-2 px-3 py-2 rounded-xl text-sm hover:bg-[color:var(--muted)] cursor-pointer">
+              <span class="flex-1 truncate text-[color:var(--muted-fg)]">PDF summary draft</span>
+            </div>
+            <div class="nav-item flex items-center gap-2 px-3 py-2 rounded-xl text-sm hover:bg-[color:var(--muted)] cursor-pointer">
+              <span class="flex-1 truncate text-[color:var(--muted-fg)]">Tax document Q&A</span>
+            </div>
+          </div>
+
+          <div class="px-3 mt-5 text-[11px] uppercase tracking-wider text-[color:var(--muted-fg)] font-medium">
+            Previous 7 days
+          </div>
+          <div class="space-y-0.5 mt-1">
+            <div class="nav-item flex items-center gap-2 px-3 py-2 rounded-xl text-sm hover:bg-[color:var(--muted)] cursor-pointer">
+              <span class="flex-1 truncate text-[color:var(--muted-fg)]">Image analysis sample</span>
+            </div>
+            <div class="nav-item flex items-center gap-2 px-3 py-2 rounded-xl text-sm hover:bg-[color:var(--muted)] cursor-pointer">
+              <span class="flex-1 truncate text-[color:var(--muted-fg)]">Trip itinerary brainstorm</span>
+            </div>
+            <div class="nav-item flex items-center gap-2 px-3 py-2 rounded-xl text-sm hover:bg-[color:var(--muted)] cursor-pointer">
+              <span class="flex-1 truncate text-[color:var(--muted-fg)]">CSV cleanup script</span>
+            </div>
+            <div class="nav-item flex items-center gap-2 px-3 py-2 rounded-xl text-sm hover:bg-[color:var(--muted)] cursor-pointer">
+              <span class="flex-1 truncate text-[color:var(--muted-fg)]">Resume bullet rewrite</span>
+            </div>
+          </div>
+        </nav>
+
+        <div class="p-3 border-t border-[color:var(--border)]/70">
+          <div class="flex items-center gap-3 p-2 rounded-2xl hover:bg-[color:var(--muted)] cursor-pointer">
+            <div class="grad-primary w-9 h-9 rounded-full flex items-center justify-center text-white text-sm font-semibold">
+              M
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="text-sm font-medium truncate">Mhmd Ali</div>
+              <div class="text-[11px] text-[color:var(--muted-fg)] truncate">Free plan</div>
+            </div>
+            <button class="icon-btn" title="Sign out">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            </button>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main -->
+      <main class="flex-1 flex flex-col glass ring-soft rounded-3xl overflow-hidden">
+        <!-- Top bar -->
+        <header class="px-6 py-4 flex items-center gap-3 border-b border-[color:var(--border)]/70">
+          <div class="flex-1 min-w-0">
+            <h1 class="text-base font-semibold tracking-tight truncate">Refining the chat UI</h1>
+            <p class="text-xs text-[color:var(--muted-fg)]">12 messages · auto-saved</p>
+          </div>
+          <span class="chip text-xs px-2.5 py-1 rounded-full font-medium">Kiwi · GPT</span>
+          <button class="icon-btn" title="Share"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></button>
+          <button class="icon-btn" title="More"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/></svg></button>
+        </header>
+
+        <!-- Messages -->
+        <div class="flex-1 overflow-y-auto px-6 py-8">
+          <div class="max-w-3xl mx-auto space-y-6">
+
+            <!-- Day divider -->
+            <div class="flex items-center gap-3 text-[11px] text-[color:var(--muted-fg)]">
+              <div class="flex-1 h-px bg-[color:var(--border)]"></div>
+              <span>Today</span>
+              <div class="flex-1 h-px bg-[color:var(--border)]"></div>
+            </div>
+
+            <!-- user msg -->
+            <div class="flex gap-3 justify-end">
+              <div class="bubble-user max-w-[78%] rounded-3xl rounded-br-md px-4 py-2.5 shadow-md shadow-[oklch(0.65_0.2_350/0.25)]">
+                <p class="text-sm leading-relaxed">Hey, can you sketch a cleaner sidebar + chat layout? Keep the pink theme.</p>
+              </div>
+              <div class="w-9 h-9 rounded-2xl bg-[color:var(--muted)] flex items-center justify-center text-sm font-semibold shrink-0">M</div>
+            </div>
+
+            <!-- assistant -->
+            <div class="flex gap-3">
+              <div class="grad-primary w-9 h-9 rounded-2xl flex items-center justify-center text-white text-sm font-bold shrink-0 shadow-md">K</div>
+              <div class="bubble-assistant max-w-[78%] rounded-3xl rounded-bl-md px-4 py-3 shadow-sm">
+                <p class="text-sm leading-relaxed">
+                  Sure. Here's the plan:
+                </p>
+                <ul class="text-sm leading-relaxed mt-2 ml-4 list-disc text-[color:var(--fg)]">
+                  <li>Soft glass panels with rounded-3xl corners</li>
+                  <li>Gradient primary buttons + bubbles</li>
+                  <li>Search w/ ⌘K, grouped chat history</li>
+                  <li>Sticky composer with attachment chips</li>
+                </ul>
+                <div class="mt-3 flex flex-wrap gap-1.5">
+                  <button class="chip text-xs px-2.5 py-1 rounded-full">Copy</button>
+                  <button class="chip text-xs px-2.5 py-1 rounded-full">Regenerate</button>
+                  <button class="chip text-xs px-2.5 py-1 rounded-full">Good</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- user msg with image preview -->
+            <div class="flex gap-3 justify-end">
+              <div class="space-y-2 max-w-[78%]">
+                <div class="rounded-2xl overflow-hidden border border-[color:var(--border)] shadow-sm">
+                  <div class="h-32 w-56 grad-primary opacity-80 flex items-center justify-center text-white text-xs">
+                    [ image preview ]
+                  </div>
+                </div>
+                <div class="bubble-user rounded-3xl rounded-br-md px-4 py-2.5 shadow-md shadow-[oklch(0.65_0.2_350/0.25)] inline-block">
+                  <p class="text-sm leading-relaxed">What's in this shot?</p>
+                </div>
+              </div>
+              <div class="w-9 h-9 rounded-2xl bg-[color:var(--muted)] flex items-center justify-center text-sm font-semibold shrink-0">M</div>
+            </div>
+
+            <!-- typing indicator -->
+            <div class="flex gap-3 items-end">
+              <div class="grad-primary w-9 h-9 rounded-2xl flex items-center justify-center text-white text-sm font-bold shrink-0 shadow-md">K</div>
+              <div class="bubble-assistant rounded-3xl rounded-bl-md px-4 py-3 flex items-center gap-1.5">
+                <span class="dot w-1.5 h-1.5 rounded-full bg-[color:var(--primary)]"></span>
+                <span class="dot w-1.5 h-1.5 rounded-full bg-[color:var(--primary)]"></span>
+                <span class="dot w-1.5 h-1.5 rounded-full bg-[color:var(--primary)]"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Composer -->
+        <div class="px-6 pb-5 pt-2">
+          <div class="max-w-3xl mx-auto">
+            <!-- attachment row -->
+            <div class="flex flex-wrap gap-2 mb-2">
+              <div class="inline-flex items-center gap-2 px-2.5 py-1.5 rounded-xl bg-[color:var(--muted)] border border-[color:var(--border)] text-xs">
+                <span class="grad-primary w-6 h-6 rounded-md flex items-center justify-center text-white text-[10px]">PDF</span>
+                <span class="truncate max-w-[180px]">quarterly-report.pdf</span>
+                <button class="text-[color:var(--muted-fg)] hover:text-[color:var(--fg)]">×</button>
+              </div>
+            </div>
+
+            <div class="glass ring-soft rounded-3xl border border-[color:var(--border)] p-2 flex items-end gap-2">
+              <button class="icon-btn" title="Attach">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 17.93 8.83l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+              </button>
+              <textarea
+                rows="1"
+                placeholder="Message Kiwi…"
+                class="flex-1 resize-none py-2 px-1 text-sm leading-relaxed placeholder:text-[color:var(--muted-fg)] max-h-40"
+              ></textarea>
+              <button class="icon-btn" title="Voice">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+              </button>
+              <button
+                class="grad-primary text-white rounded-2xl h-10 w-10 flex items-center justify-center shadow-md shadow-[oklch(0.65_0.2_350/0.35)] hover:opacity-95"
+                title="Send"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              </button>
+            </div>
+
+            <div class="flex items-center justify-between mt-2 px-1">
+              <p class="text-[11px] text-[color:var(--muted-fg)]">
+                Kiwi can make mistakes. Check important info.
+              </p>
+              <p class="text-[11px] text-[color:var(--muted-fg)]">
+                <span class="kbd">Enter</span> send · <span class="kbd">Shift</span>+<span class="kbd">Enter</span> newline
+              </p>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
